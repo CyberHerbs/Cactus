@@ -11,8 +11,8 @@
 	<groupId>ru.cyberherbs</groupId>
 	<artifactId>cactus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cactus</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Cactus</name>
+	<description>Cactus e-commerce engine</description>
 
 	<properties>
 		<java.version>11</java.version>
