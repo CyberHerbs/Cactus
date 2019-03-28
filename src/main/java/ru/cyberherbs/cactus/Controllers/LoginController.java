@@ -1,7 +1,7 @@
 package ru.cyberherbs.cactus.Controllers;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -12,28 +12,32 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.cyberherbs.cactus.Models.User;
 import ru.cyberherbs.cactus.UserService;
 
+import javax.validation.Valid;
+
 @Controller
 public class LoginController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value={"/login"}, method = RequestMethod.GET)
-    public ModelAndView login(){
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         return modelAndView;
     }
 
-    @RequestMapping(value={"/"}, method = RequestMethod.GET)
-    public ModelAndView mainPage(){
+
+    @Autowired
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView mainPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
         return modelAndView;
     }
 
-    @RequestMapping(value="/registration", method = RequestMethod.GET)
-    public ModelAndView registration(){
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public ModelAndView registration() {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
         modelAndView.addObject("user", user);
@@ -57,19 +61,19 @@ public class LoginController {
             modelAndView.addObject("successMessage", "Вы успешно зарегистрировались");
             modelAndView.addObject("user", new User());
             modelAndView.setViewName("registration");
-
         }
         return modelAndView;
     }
 
-    @RequestMapping(value="/admin/home", method = RequestMethod.GET)
-    public ModelAndView home(){
+    @PreAuthorize("hasRole('ADMIN')")
+    @RequestMapping(value = "/admin/home", method = RequestMethod.GET)
+    public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        modelAndView.addObject("userName", "Добро пожаловать " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-        modelAndView.addObject("adminMessage","Данные доступны только для Админа");
-        modelAndView.setViewName("admin/home");
+        modelAndView.addObject("username", user.getName() + " " + user.getLastName());
+        modelAndView.addObject("adminMessage", "Данные доступны только для Админа");
+        modelAndView.setViewName("/admin/home");
         return modelAndView;
     }
 }

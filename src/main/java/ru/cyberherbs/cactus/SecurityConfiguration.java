@@ -1,5 +1,6 @@
 package ru.cyberherbs.cactus;
 
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -8,10 +9,17 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.savedrequest.DefaultSavedRequest;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.stereotype.Component;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
+import java.io.IOException;
 
 @Configuration
 @EnableWebSecurity
@@ -49,14 +57,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
-                .authenticated().and().csrf().disable().formLogin()
+                .authenticated().and().csrf().and().formLogin().successHandler(new RefererRedirectionAuthenticationSuccessHandler())
                 .loginPage("/login").failureUrl("/login?error=true")
                 .defaultSuccessUrl("/admin/home")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/").and().exceptionHandling()
+                .logoutSuccessUrl("/login").and().exceptionHandling()
                 .accessDeniedPage("/access-denied");
     }
 
@@ -66,5 +74,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .ignoring()
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
     }
+
+
 
 }

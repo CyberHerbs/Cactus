@@ -9,7 +9,7 @@ import ru.cyberherbs.cactus.Models.User;
 import ru.cyberherbs.cactus.backend.DB.RoleRepository;
 import ru.cyberherbs.cactus.backend.DB.UserRepository;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 
 @Service("userService")
@@ -31,7 +31,7 @@ public class UserService {
     public void saveUser(User user){
         user.setPassword(encoder.encode(user.getPassword()));
         Role userRole = roleRepository.findByRole("ADMIN");
-        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+        user.setRoles(new HashSet<>(Collections.singletonList(userRole)));
         userRepository.save(user);
     }
 }
