@@ -1,0 +1,9 @@
+footer.page-footer {
+    color: #212525;
+}
+footer.page-footer a {
+    color: #0e1024;
+}
+footer.page-footer a:hover {
+    color: #fff;
+}
