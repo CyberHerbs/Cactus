@@ -97,90 +97,45 @@
         </div>
     </nav>
     <div class="container pt-2">
-        <form class="border border-light p-5">
-            <h1>Подберите аккумулятор под автомобиль</h1>
-            <div class="row">
-                <div class="col-md mr-md-2">
-                    <label>Марка</label>
-                    <select class="browser-default custom-select">
-                        <option value="" disabled>Choose option</option>
-                        <option value="1" selected>Feedback</option>
-                        <option value="2">Report a bug</option>
-                        <option value="3">Feature request</option>
-                        <option value="4">Feature request</option>
-                    </select>
-                    <label>Модель</label>
-                    <select class="browser-default custom-select">
-                        <option value="" disabled>Choose option</option>
-                        <option value="1" selected>Feedback</option>
-                        <option value="2">Report a bug</option>
-                        <option value="3">Feature request</option>
-                        <option value="4">Feature request</option>
-                    </select>
-                    <label>Год</label>
-                    <select class="browser-default custom-select">
-                        <option value="" disabled>Choose option</option>
-                        <option value="1" selected>Feedback</option>
-                        <option value="2">Report a bug</option>
-                        <option value="3">Feature request</option>
-                        <option value="4">Feature request</option>
-                    </select>
-                    <label>Вид топлива</label>
-                    <select class="browser-default custom-select">
-                        <option value="" disabled>Choose option</option>
-                        <option value="1" selected>Feedback</option>
-                        <option value="2">Report a bug</option>
-                        <option value="3">Feature request</option>
-                        <option value="4">Feature request</option>
-                    </select>
-                </div>
-                <div class="col-md">
-                    <label>Двигатель</label>
-                    <select class="browser-default custom-select">
-                        <option value="" disabled>Choose option</option>
-                        <option value="1" selected>Feedback</option>
-                        <option value="2">Report a bug</option>
-                        <option value="3">Feature request</option>
-                        <option value="4">Feature request</option>
-                    </select>
-                    <label>Привод</label>
-                    <select class="browser-default custom-select">
-                        <option value="" disabled>Choose option</option>
-                        <option value="1" selected>Feedback</option>
-                        <option value="2">Report a bug</option>
-                        <option value="3">Feature request</option>
-                        <option value="4">Feature request</option>
-                    </select>
-                    <label>Кузов</label>
-                    <select class="browser-default custom-select">
-                        <option value="" disabled>Choose option</option>
-                        <option value="1" selected>Feedback</option>
-                        <option value="2">Report a bug</option>
-                        <option value="3">Feature request</option>
-                        <option value="4">Feature request</option>
-                    </select>
-                    <label>Трансмиссия</label>
-                    <select class="browser-default custom-select">
-                        <option value="" disabled>Choose option</option>
-                        <option value="1" selected>Feedback</option>
-                        <option value="2">Report a bug</option>
-                        <option value="3">Feature request</option>
-                        <option value="4">Feature request</option>
-                    </select>
-                </div>
-            </div>
-            <div class="d-flex justify-content-around mt-5">
-                <div class="">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-                        <label class="custom-control-label" for="defaultLoginFormRemember">Я не робот</label>
+        <h1>Аккумуляторы для авто</h1>
+        <!--h6>Популярное:</h6-->
+        <a class="btn btn-light btn-sm">Аккумуляторы на приус</a>
+        <a class="btn btn-light btn-sm">Аккумуляторы 70 Ач</a>
+        <a class="btn btn-light btn-sm">Аккумуляторы на не приус</a>
+        <div class="container mt-2">
+            <ul class="list-unstyled">
+                <li class="media">
+                    <img class="mr-3 w-25" th:src="@{/img/accum.jpg}" alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h3 class="mt-0 mb-1"><a href="#">Аккумулятор Bosch</a></h3>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        <h2 class="">5 199 ₽</h2>
+                        <strong>В наличии: </strong>
+                        <span>в 2 магазинах</span>
                     </div>
-                </div>
-                <div class="">
-                    <button class="btn btn-block btn-amber" type="submit">Подобрать</button>
-                </div>
-            </div>
-        </form>
+                </li>
+                <li class="media my-4">
+                    <img class="mr-3 w-25" th:src="@{/img/accum.jpg}" alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h3 class="mt-0 mb-1"><a href="#">Аккумулятор Bosch</a></h3>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        <h2 class="">5 199 ₽</h2>
+                        <strong>В наличии: </strong>
+                        <span>в 2 магазинах</span>
+                    </div>
+                </li>
+                <li class="media">
+                    <img class="mr-3 w-25" th:src="@{/img/accum.jpg}" alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h3 class="mt-0 mb-1"><a href="#">Аккумулятор Bosch</a></h3>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        <h2 class="">5 199 ₽</h2>
+                        <strong>В наличии: </strong>
+                        <span>в 2 магазинах</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 <footer class="page-footer font-small amber darken-2 pt-4">
